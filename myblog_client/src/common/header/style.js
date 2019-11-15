@@ -23,7 +23,6 @@ export const Nav = styled.div`
   height: 100%;
   padding-right: 70px;
   box-sizing: border-box;
-  cursor: pointer;
   margin: 0 auto;
 `;
 
@@ -32,6 +31,7 @@ export const NavItem = styled.div`
   padding: 0 15px;
   font-size: 18px;
   color: #333;
+  cursor: pointer;
   &.left {
     float: left;
   }
