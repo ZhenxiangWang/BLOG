@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import logoPic from "../../statics/logo.png";
+import logoPic from "../../statics/logo1.png";
 
 export const HeaderWrapper = styled.div`
   position: relative;
@@ -10,10 +10,10 @@ export const HeaderWrapper = styled.div`
 export const Logo = styled.a.attrs({ href: "/" })`
   position: absolute;
   top: 0;
-  left: 0;
+  left: -10px;
   display: block;
-  width: 100px;
-  height: 56px;
+  width: 199px;
+  height: 58px;
   background: url(${logoPic});
   background-size: contain;
 `;
@@ -28,9 +28,9 @@ export const Nav = styled.div`
 `;
 
 export const NavItem = styled.div`
-  line-height: 56px;
+  line-height: 58px;
   padding: 0 15px;
-  font-size: 17px;
+  font-size: 18px;
   color: #333;
   &.left {
     float: left;
@@ -48,7 +48,7 @@ export const NavSearch = styled.input.attrs({ placeholder: "Search" })`
   width: 160px;
   height: 38px;
   padding: 0 30px 0 20px;
-  margin-top: 9px;
+  margin-top: 10px;
   margin-left: 20px;
   box-sizing: border-box;
   border: none;
@@ -63,21 +63,20 @@ export const NavSearch = styled.input.attrs({ placeholder: "Search" })`
   &.focused {
     width: 240px;
   }
-`;
+  &.slide-enter {
+    transition: all 0.2s ease-out;
+  }
 
-// export const SearchBtn = styled.span`
-//   position: absolute;
-//   right: 5px;
-//   bottom: 3px;
-//   width: 30px;
-//   line-height: 30px;
-//   border-radius: 15px;
-//   text-align: center;
-//   &.focused: {
-//     background: #777;
-//     color: white;
-//   }
-// `;
+  &.slide-enter-active {
+    width: 240px;
+  }
+  &.slide-exit {
+    transition: all 0.2s ease-out;
+  }
+  &.slide-exit-active {
+    width: 160px;
+  }
+`;
 
 export const Addition = styled.div`
   position: absolute;
@@ -89,13 +88,13 @@ export const Addition = styled.div`
 export const Button = styled.div`
   cursor: pointer;
   float: right;
-  margin-top: 9px;
+  margin-top: 10px;
   margin-right: 20px;
   padding: 0 20px;
   line-height: 38px;
   border-radius: 19px;
   border: 1px solid #ec6149;
-  font-size: 14px;
+  font-size: 16px;
   &.reg {
     color: #ec6149;
   }
@@ -108,19 +107,7 @@ export const Button = styled.div`
 export const SearchWrapper = styled.div`
   position: relative;
   float: left;
-  .slide-enter {
-    transition: all 0.2s ease-out;
-  }
 
-  .slide-enter-active {
-    width: 240px;
-  }
-  .slide-exit {
-    transition: all 0.2s ease-out;
-  }
-  .slide-exit-active {
-    width: 160px;
-  }
   .iconfont {
     position: absolute;
     right: 5px;
