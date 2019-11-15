@@ -46,7 +46,7 @@ class Header extends Component {
             <i className={this.props.focused ? "focused iconfont" : "iconfont"}>
               &#xe62a;
             </i>
-            {this.getListArea(this.props.focused)}
+            {this.getListArea()}
           </SearchWrapper>
         </Nav>
         <Addition>
@@ -58,8 +58,8 @@ class Header extends Component {
       </HeaderWrapper>
     );
   }
-  getListArea(show) {
-    if (show) {
+  getListArea() {
+    if (this.props.focused) {
       return (
         <SearchInfo>
           <SearchInfoTitle>
@@ -67,13 +67,10 @@ class Header extends Component {
             <SearchInfoSwitch>Switch</SearchInfoSwitch>
           </SearchInfoTitle>
           <SearchInfoList>
-            <SearchInfoItem>JavaScript</SearchInfoItem>
-            <SearchInfoItem>HTML</SearchInfoItem>
-            <SearchInfoItem>CSS</SearchInfoItem>
-            <SearchInfoItem>React</SearchInfoItem>
-            <SearchInfoItem>Redux</SearchInfoItem>
-            <SearchInfoItem>Movie</SearchInfoItem>
-            <SearchInfoItem>Music</SearchInfoItem>
+            {//这里的list也是个immutable的list，但是immutable也给我们提供了map方法。
+            this.props.list.map(item => {
+              return <SearchInfoItem key={item}>{item}</SearchInfoItem>;
+            })}
           </SearchInfoList>
         </SearchInfo>
       );
@@ -85,13 +82,15 @@ class Header extends Component {
 
 const mapStateToProps = state => {
   return {
-    focused: state.getIn(["header", "focused"])
+    focused: state.getIn(["header", "focused"]),
+    list: state.getIn(["header", "list"])
   };
 };
 
 const mapDispathToProps = dispatch => {
   return {
     handleInputFocus() {
+      dispatch(actionCreators.getList());
       dispatch(actionCreators.searchFocus());
     },
 
