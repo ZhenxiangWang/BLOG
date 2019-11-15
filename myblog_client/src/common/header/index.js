@@ -19,7 +19,48 @@ import {
 } from "./style.js";
 
 class Header extends Component {
+  getListArea() {
+    const {
+      focused,
+      list,
+      page,
+      totalPage,
+      mouseIn,
+      hangleMouseEnter,
+      handleMouseLeave,
+      handleChangePage
+    } = this.props;
+    //把list转化给普通js数组
+    const newList = list.toJS();
+    const pageList = [];
+    if (newList.length) {
+      for (let i = (page - 1) * 10; i < page * 10; i++) {
+        pageList.push(
+          <SearchInfoItem key={newList[i]}>{newList[i]}</SearchInfoItem>
+        );
+      }
+    }
+
+    if (focused || mouseIn) {
+      return (
+        <SearchInfo
+          onMouseEnter={hangleMouseEnter}
+          onMouseLeave={handleMouseLeave}
+        >
+          <SearchInfoTitle onClick={() => handleChangePage(page, totalPage)}>
+            Hot Searches
+            <SearchInfoSwitch>Switch</SearchInfoSwitch>
+          </SearchInfoTitle>
+          <SearchInfoList>{pageList}</SearchInfoList>
+        </SearchInfo>
+      );
+    } else {
+      return null;
+    }
+  }
+
   render() {
+    const { focused, mouseIn, handleInputFocus, handleInputBlur } = this.props;
     return (
       <HeaderWrapper>
         <Logo />
@@ -31,19 +72,15 @@ class Header extends Component {
             <span className="iconfont">&#xe636;</span>
           </NavItem>
           <SearchWrapper>
-            <CSSTransition
-              in={this.props.focused}
-              timeout={200}
-              classNames="slide"
-            >
+            <CSSTransition in={focused} timeout={200} classNames="slide">
               <NavSearch
-                className={this.props.focused ? "focused" : ""}
-                onFocus={this.props.handleInputFocus}
-                onBlur={this.props.handleInputBlur}
+                className={focused ? "focused" : ""}
+                onFocus={handleInputFocus}
+                onBlur={handleInputBlur}
               ></NavSearch>
             </CSSTransition>
 
-            <i className={this.props.focused ? "focused iconfont" : "iconfont"}>
+            <i className={focused ? "focused iconfont" : "iconfont"}>
               &#xe62a;
             </i>
             {this.getListArea()}
@@ -58,32 +95,15 @@ class Header extends Component {
       </HeaderWrapper>
     );
   }
-  getListArea() {
-    if (this.props.focused) {
-      return (
-        <SearchInfo>
-          <SearchInfoTitle>
-            Hot Searches
-            <SearchInfoSwitch>Switch</SearchInfoSwitch>
-          </SearchInfoTitle>
-          <SearchInfoList>
-            {//这里的list也是个immutable的list，但是immutable也给我们提供了map方法。
-            this.props.list.map(item => {
-              return <SearchInfoItem key={item}>{item}</SearchInfoItem>;
-            })}
-          </SearchInfoList>
-        </SearchInfo>
-      );
-    } else {
-      return null;
-    }
-  }
 }
 
 const mapStateToProps = state => {
   return {
     focused: state.getIn(["header", "focused"]),
-    list: state.getIn(["header", "list"])
+    list: state.getIn(["header", "list"]),
+    page: state.getIn(["header", "page"]),
+    totalPage: state.getIn(["header", "totalPage"]),
+    mouseIn: state.getIn(["header", "mouseIn"])
   };
 };
 
@@ -96,6 +116,19 @@ const mapDispathToProps = dispatch => {
 
     handleInputBlur() {
       dispatch(actionCreators.searchBlur());
+    },
+    hangleMouseEnter() {
+      dispatch(actionCreators.mouseEnter());
+    },
+    handleMouseLeave() {
+      dispatch(actionCreators.mouseLeave());
+    },
+    handleChangePage(page, totalPage) {
+      if (page < totalPage) {
+        dispatch(actionCreators.changePage(page + 1));
+      } else {
+        dispatch(actionCreators.changePage(1));
+      }
     }
   };
 };
