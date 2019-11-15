@@ -10,9 +10,37 @@ import {
   NavSearch,
   Addition,
   Button,
-  SearchWrapper
+  SearchWrapper,
+  SearchInfo,
+  SearchInfoTitle,
+  SearchInfoSwitch,
+  SearchInfoItem,
+  SearchInfoList
 } from "./style.js";
 
+const getListArea = show => {
+  if (show) {
+    return (
+      <SearchInfo>
+        <SearchInfoTitle>
+          Hot Searches
+          <SearchInfoSwitch>Switch</SearchInfoSwitch>
+        </SearchInfoTitle>
+        <SearchInfoList>
+          <SearchInfoItem>JavaScript</SearchInfoItem>
+          <SearchInfoItem>HTML</SearchInfoItem>
+          <SearchInfoItem>CSS</SearchInfoItem>
+          <SearchInfoItem>React</SearchInfoItem>
+          <SearchInfoItem>Redux</SearchInfoItem>
+          <SearchInfoItem>Movie</SearchInfoItem>
+          <SearchInfoItem>Music</SearchInfoItem>
+        </SearchInfoList>
+      </SearchInfo>
+    );
+  } else {
+    return null;
+  }
+};
 //无状态组件
 const Header = props => {
   return (
@@ -37,6 +65,7 @@ const Header = props => {
           <i className={props.focused ? "focused iconfont" : "iconfont"}>
             &#xe62a;
           </i>
+          {getListArea(props.focused)}
         </SearchWrapper>
       </Nav>
       <Addition>
