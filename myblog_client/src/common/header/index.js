@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Component } from "react";
 import { connect } from "react-redux";
 import { CSSTransition } from "react-transition-group";
 import { actionCreators } from "./store";
@@ -18,65 +18,70 @@ import {
   SearchInfoList
 } from "./style.js";
 
-const getListArea = show => {
-  if (show) {
+class Header extends Component {
+  render() {
     return (
-      <SearchInfo>
-        <SearchInfoTitle>
-          Hot Searches
-          <SearchInfoSwitch>Switch</SearchInfoSwitch>
-        </SearchInfoTitle>
-        <SearchInfoList>
-          <SearchInfoItem>JavaScript</SearchInfoItem>
-          <SearchInfoItem>HTML</SearchInfoItem>
-          <SearchInfoItem>CSS</SearchInfoItem>
-          <SearchInfoItem>React</SearchInfoItem>
-          <SearchInfoItem>Redux</SearchInfoItem>
-          <SearchInfoItem>Movie</SearchInfoItem>
-          <SearchInfoItem>Music</SearchInfoItem>
-        </SearchInfoList>
-      </SearchInfo>
-    );
-  } else {
-    return null;
-  }
-};
-//无状态组件
-const Header = props => {
-  return (
-    <HeaderWrapper>
-      <Logo />
-      <Nav>
-        <NavItem className="left active">Home</NavItem>
-        <NavItem className="left">Download App</NavItem>
-        <NavItem className="right">Login</NavItem>
-        <NavItem className="right">
-          <span className="iconfont">&#xe636;</span>
-        </NavItem>
-        <SearchWrapper>
-          <CSSTransition in={props.focused} timeout={200} classNames="slide">
-            <NavSearch
-              className={props.focused ? "focused" : ""}
-              onFocus={props.handleInputFocus}
-              onBlur={props.handleInputBlur}
-            ></NavSearch>
-          </CSSTransition>
+      <HeaderWrapper>
+        <Logo />
+        <Nav>
+          <NavItem className="left active">Home</NavItem>
+          <NavItem className="left">Download App</NavItem>
+          <NavItem className="right">Login</NavItem>
+          <NavItem className="right">
+            <span className="iconfont">&#xe636;</span>
+          </NavItem>
+          <SearchWrapper>
+            <CSSTransition
+              in={this.props.focused}
+              timeout={200}
+              classNames="slide"
+            >
+              <NavSearch
+                className={this.props.focused ? "focused" : ""}
+                onFocus={this.props.handleInputFocus}
+                onBlur={this.props.handleInputBlur}
+              ></NavSearch>
+            </CSSTransition>
 
-          <i className={props.focused ? "focused iconfont" : "iconfont"}>
-            &#xe62a;
-          </i>
-          {getListArea(props.focused)}
-        </SearchWrapper>
-      </Nav>
-      <Addition>
-        <Button className="writting">
-          <span className="iconfont">&#xe616;</span> Write
-        </Button>
-        <Button className="reg">SignUp</Button>
-      </Addition>
-    </HeaderWrapper>
-  );
-};
+            <i className={this.props.focused ? "focused iconfont" : "iconfont"}>
+              &#xe62a;
+            </i>
+            {this.getListArea(this.props.focused)}
+          </SearchWrapper>
+        </Nav>
+        <Addition>
+          <Button className="writting">
+            <span className="iconfont">&#xe616;</span> Write
+          </Button>
+          <Button className="reg">SignUp</Button>
+        </Addition>
+      </HeaderWrapper>
+    );
+  }
+  getListArea(show) {
+    if (show) {
+      return (
+        <SearchInfo>
+          <SearchInfoTitle>
+            Hot Searches
+            <SearchInfoSwitch>Switch</SearchInfoSwitch>
+          </SearchInfoTitle>
+          <SearchInfoList>
+            <SearchInfoItem>JavaScript</SearchInfoItem>
+            <SearchInfoItem>HTML</SearchInfoItem>
+            <SearchInfoItem>CSS</SearchInfoItem>
+            <SearchInfoItem>React</SearchInfoItem>
+            <SearchInfoItem>Redux</SearchInfoItem>
+            <SearchInfoItem>Movie</SearchInfoItem>
+            <SearchInfoItem>Music</SearchInfoItem>
+          </SearchInfoList>
+        </SearchInfo>
+      );
+    } else {
+      return null;
+    }
+  }
+}
 
 const mapStateToProps = state => {
   return {

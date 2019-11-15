@@ -2,7 +2,8 @@ import * as constants from "./constants";
 import { fromJS } from "immutable";
 
 const defaulState = fromJS({
-  focused: false
+  focused: false,
+  list: []
 });
 
 export default (state = defaulState, action) => {

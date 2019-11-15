@@ -135,12 +135,12 @@ export const SearchInfoTitle = styled.div`
   margin-top: 20px;
   margin-bottom: 15px;
   line-height: 20px;
-  font-size: 14px;
+  font-size: 15px;
   color: #969696;
 `;
 export const SearchInfoSwitch = styled.span`
   float: right;
-  font-size: 13px;
+  font-size: 14px;
 `;
 export const SearchInfoItem = styled.a`
   display: block;
@@ -149,7 +149,7 @@ export const SearchInfoItem = styled.a`
   padding: 0 5px;
   margin-right: 10px;
   margin-bottom: 10px;
-  font-size: 12px;
+  font-size: 14px;
   border: 1px solid #ddd;
   color: #787878;
   border-radius: 3px;
