@@ -6,7 +6,9 @@ import {
   NavItem,
   NavSearch,
   Addition,
-  Button
+  Button,
+  SearchWrapper,
+  SearchBtn
 } from "./style.js";
 
 class Header extends Component {
@@ -18,11 +20,20 @@ class Header extends Component {
           <NavItem className="left active">Home</NavItem>
           <NavItem className="left">Download App</NavItem>
           <NavItem className="right">Login</NavItem>
-          <NavItem className="right">Aa</NavItem>
-          <NavSearch></NavSearch>
+          <NavItem className="right">
+            <span className="iconfont">&#xe636;</span>
+          </NavItem>
+          <SearchWrapper>
+            <NavSearch></NavSearch>
+            <SearchBtn>
+              <i className="iconfont">&#xe62a;</i>
+            </SearchBtn>
+          </SearchWrapper>
         </Nav>
         <Addition>
-          <Button className="writting">Write</Button>
+          <Button className="writting">
+            <span className="iconfont">&#xe616;</span> Write
+          </Button>
           <Button className="reg">SignUp</Button>
         </Addition>
       </HeaderWrapper>

@@ -42,6 +42,10 @@ export const NavItem = styled.div`
     color: #ea6f5a;
   }
 `;
+export const SearchWrapper = styled.div`
+  position: relative;
+  float: left;
+`;
 
 export const NavSearch = styled.input.attrs({ placeholder: "Search" })`
   width: 160px;
@@ -58,6 +62,17 @@ export const NavSearch = styled.input.attrs({ placeholder: "Search" })`
   &::placeholder {
     color: #999;
   }
+`;
+
+export const SearchBtn = styled.span`
+  position: absolute;
+  right: 5px;
+  bottom: 3px;
+  width: 30px;
+  line-height: 30px;
+  border-radius: 15px;
+  text-align: center;
+  background: green;
 `;
 
 export const Addition = styled.div`
