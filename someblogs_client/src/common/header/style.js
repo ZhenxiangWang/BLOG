@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import logoPic from "../../statics/logo1.png";
+import logoPic from "../../statics/logo2.png";
 
 export const HeaderWrapper = styled.div`
   position: relative;
@@ -10,16 +10,16 @@ export const HeaderWrapper = styled.div`
 export const Logo = styled.a.attrs({ href: "/" })`
   position: absolute;
   top: 0;
-  left: -10px;
+  left: 10px;
   display: block;
-  width: 199px;
+  width: 112px;
   height: 58px;
   background: url(${logoPic});
   background-size: contain;
 `;
 
 export const Nav = styled.div`
-  width: 960px;
+  width: 1040px;
   height: 100%;
   padding-right: 70px;
   box-sizing: border-box;
@@ -128,7 +128,8 @@ export const SearchInfo = styled.div`
   left: 20px;
   top: 58px;
   width: 200px;
-  padding: 0 20px;
+  padding: 0 20px 5px;
+  background: white;
   box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
 `;
 export const SearchInfoTitle = styled.div`
