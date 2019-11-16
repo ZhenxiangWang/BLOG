@@ -60,7 +60,7 @@ class Header extends Component {
   }
 
   render() {
-    const { focused, mouseIn, handleInputFocus, handleInputBlur } = this.props;
+    const { focused, handleInputFocus, handleInputBlur } = this.props;
     return (
       <HeaderWrapper>
         <Logo />
