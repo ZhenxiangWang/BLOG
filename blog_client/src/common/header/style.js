@@ -19,9 +19,9 @@ export const Logo = styled.a.attrs({ href: "/" })`
 `;
 
 export const Nav = styled.div`
-  width: 1040px;
+  width: 1080px;
   height: 100%;
-  padding-right: 70px;
+  padding-right: 90px;
   box-sizing: border-box;
   margin: 0 auto;
 `;
@@ -80,7 +80,7 @@ export const NavSearch = styled.input.attrs({ placeholder: "Search" })`
 
 export const Addition = styled.div`
   position: absolute;
-  right: 0;
+  right: 10px;
   top: 0;
   height: 56px;
 `;
@@ -89,7 +89,7 @@ export const Button = styled.div`
   cursor: pointer;
   float: right;
   margin-top: 10px;
-  margin-right: 20px;
+  margin-right: 25px;
   padding: 0 20px;
   line-height: 38px;
   border-radius: 19px;
