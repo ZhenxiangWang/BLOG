@@ -4,6 +4,7 @@ import { fromJS } from "immutable";
 
 const changeList = data => ({
   type: constants.CHANGE_LIST,
+  //把data转成immutable数据
   data: fromJS(data),
   totalPage: Math.ceil(data.length / 10)
 });

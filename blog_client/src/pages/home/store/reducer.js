@@ -4,7 +4,8 @@ import * as constants from "./constants.js";
 const defaulState = fromJS({
   topicList: [],
   articleList: [],
-  recommendList: []
+  recommendList: [],
+  articlePage: 1
 });
 
 export default (state = defaulState, action) => {
@@ -15,6 +16,12 @@ export default (state = defaulState, action) => {
         articleList: fromJS(action.articleList),
         recommendList: fromJS(action.recommendList)
       });
+    case constants.ADD_ARTICLE_LIST:
+      return state.merge({
+        articleList: state.get("articleList").concat(action.list),
+        articlePage: action.nextPage
+      });
+
     default:
       return state;
   }
