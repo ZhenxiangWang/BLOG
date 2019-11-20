@@ -10,7 +10,7 @@ const changeHomeData = result => ({
 });
 const addHomeList = (list, nextPage) => ({
   type: constants.ADD_ARTICLE_LIST,
-  //把list转给immutable list
+  //把list转给immutable list，并且把list内部的对象也变为immutable
   list: fromJS(list),
   nextPage
 });
@@ -33,3 +33,7 @@ export const getMoreList = page => {
     });
   };
 };
+export const toggleTopShow = show => ({
+  type: constants.TOGGLE_SCROLL_TOP,
+  show
+});
