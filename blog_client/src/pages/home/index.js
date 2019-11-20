@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { PureComponent } from "react";
 import { HomeWrapper, HomeLeft, HomeRight } from "./style";
 import bannerImg from "../../statics/banner.jpg";
 import Topic from "./components/Topic";
@@ -9,8 +9,9 @@ import { actionCreators } from "./store";
 import { BackTop } from "./style";
 
 import { connect } from "react-redux";
-
-class Home extends Component {
+//PureComponent和Component的区别是，前者自己实现了一个shouldComponentUpdate方法，不需要我们手写这个方法来做性能优化，只在必要的时候render
+class Home extends PureComponent {
+  shouldComponentUpdate() {}
   handleScrollTop() {
     window.scrollTo(0, 0);
   }
