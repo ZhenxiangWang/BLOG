@@ -11,9 +11,13 @@ class List extends PureComponent {
         {list.map((item, index) => {
           return (
             <ListItem key={index}>
-              <img className="pic" src={item.get("imgUrl")} alt="" />
+              <a href="/detail">
+                <img className="pic" src={item.get("imgUrl")} alt="" />
+              </a>
               <ListInfo>
-                <h3 className="title">{item.get("title")}</h3>
+                <a href="/detail">
+                  <h3 className="title">{item.get("title")}</h3>
+                </a>
                 <p className="desc">{item.get("desc")}</p>
               </ListInfo>
             </ListItem>
