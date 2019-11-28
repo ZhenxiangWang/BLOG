@@ -2,6 +2,7 @@ import React, { PureComponent } from "react";
 import { connect } from "react-redux";
 import { CSSTransition } from "react-transition-group";
 import { actionCreators } from "./store";
+import { Link } from "react-router-dom";
 import {
   HeaderWrapper,
   Logo,
@@ -76,7 +77,9 @@ class Header extends PureComponent {
     const { focused, handleInputFocus, handleInputBlur, list } = this.props;
     return (
       <HeaderWrapper>
-        <Logo />
+        <Link to="/">
+          <Logo />
+        </Link>
         <Nav>
           <NavItem className="left active">Home</NavItem>
           <NavItem className="left">Download App</NavItem>

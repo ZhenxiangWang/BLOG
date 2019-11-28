@@ -14,10 +14,10 @@ class App extends PureComponent {
   render() {
     return (
       <Provider store={store}>
-        <Header />
         <GlobalStyle />
         <GlobalIcon />
         <BrowserRouter>
+          <Header />
           <Route path="/" exact component={Home}></Route>
           <Route path="/detail" exact component={Detail}></Route>
         </BrowserRouter>

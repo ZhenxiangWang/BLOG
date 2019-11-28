@@ -1,7 +1,7 @@
 import { fromJS } from "immutable";
 import * as constants from "./constants.js";
 //把js对象转化为immutable对象
-const defaulState = fromJS({
+const defaultState = fromJS({
   topicList: [],
   articleList: [],
   recommendList: [],
@@ -24,7 +24,7 @@ const addArticleList = (state, action) => {
   });
 };
 
-export default (state = defaulState, action) => {
+export default (state = defaultState, action) => {
   switch (action.type) {
     case constants.CHANGE_HOME_DATA:
       return changeHomeData(state, action);
