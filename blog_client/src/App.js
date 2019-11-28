@@ -6,7 +6,7 @@ import { GlobalStyle } from "./style.js";
 import { GlobalIcon } from "./statics/iconfont/iconfont.js";
 import store from "./store";
 import Home from "./pages/home";
-import Detail from "./pages/detail";
+import Detail from "./pages/detail/loadable.js";
 import Login from "./pages/login";
 import Write from "./pages/write";
 
